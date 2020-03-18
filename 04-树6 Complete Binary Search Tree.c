@@ -22,7 +22,7 @@ void makeCBST(int *tree, int *arr, int pos, int *i)
 {
     // 如果树的位置超出了边界或者输入数据已用完，则返回
     if (pos < 1 || pos > tree[0] || (*i) == tree[0]) return;
-    else {  // 前序遍历
+    else {  // 中序遍历
         makeCBST(tree, arr, pos * 2, i);
         tree[pos] = arr[(*i)++];
         makeCBST(tree, arr, pos * 2 + 1, i);
