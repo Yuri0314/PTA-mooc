@@ -9,3 +9,7 @@
 - [05-树9 Huffman Codes 题目分析及建树最优解法完全解析](https://blog.csdn.net/zhuiyisinian/article/details/105094720)
 - ...(随课程进度更新题解)
 
+补充题目：
+
+- 图：
+  - Forwards on Weibo: [题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805392092020736)  [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105249299)
