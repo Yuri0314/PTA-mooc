@@ -169,11 +169,13 @@ HuffmanTree RecoverHFTreeByCode(HuffmanTree HT, char *code, int *flag, int *coun
         HT = createTreeNode();
         ++(*counter);
     }
-     i = 0; node = HT;
-    while (code[i] != '\0') {
+    for (i = 0, node = HT; code[i] != '\0';  ++i) {
         // 第一种情况：该结点不是新添加结点，并且没有左右孩子，即之前字符对应的子节点
         // 说明之前某字符编码是该编码的前缀码
-        if (node->weight == 0 && !node->Left && !node->Right)   (*flag) = 0;
+        if (node->weight == 0 && !node->Left && !node->Right) {
+            (*flag) = 0;
+            break;
+        }
         node->weight = 0;
         if (code[i] == '0') {   // 读到0向左孩子走一位
             if (!node->Left) {
@@ -188,7 +190,6 @@ HuffmanTree RecoverHFTreeByCode(HuffmanTree HT, char *code, int *flag, int *coun
             }
             node = node->Right;
         }
-        ++i;
     }
     // 第二种情况：读完所有code后，该位置有孩子结点，说明该编码是之前某字符编码的前缀码
     if (node->Left || node->Right)
