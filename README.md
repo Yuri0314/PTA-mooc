@@ -9,6 +9,7 @@
 - [05-树9 Huffman Codes 题目分析及建树最优解法完全解析](https://blog.csdn.net/zhuiyisinian/article/details/105094720)
 - [07-图5 Saving James Bond - Hard Version 题目分析及最优解法 测试点4最大N不通过原因分析](https://blog.csdn.net/zhuiyisinian/article/details/105328571)
 - [08-图7 公路村村通 最小生成树 Prim算法 Kruskal算法 两种算法实现](https://blog.csdn.net/zhuiyisinian/article/details/105419368)
+- [08-图8 How Long Does It Take 题目分析](https://blog.csdn.net/zhuiyisinian/article/details/105454749)
 - ...(随课程进度更新题解)
 
 补充题目：
