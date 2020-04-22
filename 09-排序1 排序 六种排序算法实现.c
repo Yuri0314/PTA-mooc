@@ -49,12 +49,10 @@ void Merge_Recursive(ElementType A[], ElementType TmpA[], int L, int R, int Righ
 
 void Merge_NotRecursive(ElementType A[], ElementType TmpA[], int L, int R, int RightEnd)
 {
-    int LeftEnd, NumElements, Tmp;
-    int i;
+    int LeftEnd, Tmp;
 
     LeftEnd = R - 1;
     Tmp = L;
-    NumElements = RightEnd - L + 1;
 
     while (L <= LeftEnd && R <= RightEnd) {
         if (A[L] < A[R])
