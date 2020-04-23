@@ -11,6 +11,7 @@
 - [08-图7 公路村村通 最小生成树 Prim算法 Kruskal算法 两种算法实现](https://blog.csdn.net/zhuiyisinian/article/details/105419368)
 - [08-图8 How Long Does It Take 题目分析](https://blog.csdn.net/zhuiyisinian/article/details/105454749)
 - [08-图9 关键活动 题目关键点说明及解法完全分析](https://blog.csdn.net/zhuiyisinian/article/details/105492455)
+- [09-排序2 Insert or Merge 及 09-排序3 Insertion or Heap Sort 两道题目分析](https://blog.csdn.net/zhuiyisinian/article/details/105700766)
 - ...(随课程进度更新题解)
 
 补充题目：
