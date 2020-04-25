@@ -1,11 +1,63 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define QuickSort_Cutoff 50
+
 typedef int ElementType;
 
 void Swap (ElementType *a, ElementType *b)
 {
     ElementType t = *a; *a = *b; *b = t;
+}
+
+ElementType *ReadInput(int N);
+void PrintArr(ElementType A[], int N);
+
+void PercDown(ElementType A[], int p, int N);   // 堆排序使用函数
+void Merge_Recursive(ElementType A[], ElementType TmpA[], int L, int R, int RightEnd);  // 递归的归并排序使用函数
+void Merge_NotRecursive(ElementType A[], ElementType TmpA[], int L, int R, int RightEnd);   // 非递归的归并排序使用函数
+void Msort(ElementType A[], ElementType TmpA[], int L, int RightEnd);   // 递归的归并排序使用函数
+void Merge_pass(ElementType A[], ElementType TmpA[], int N, int length);    // 非递归的归并排序使用函数
+ElementType Median3( ElementType A[], int Left, int Right );    // 快速排序中的选主元函数
+void Qsort(ElementType A[], int Left, int Right);   // 快速排序的递归函数
+
+void Bubble_Sort(ElementType A[], int N);   // 冒泡排序，O(n^2)，交换变量较为耗时，超时过不了
+void Insertion_Sort(ElementType A[], int N);    // 插入排序，O(n^2)
+void Shell_Sort(ElementType A[], int N);    //希尔排序，O(n^(1.3—2))
+void Heap_Sort(ElementType A[], int N);     // 堆排序，O(n*logn)
+void Merge_Sort_Recursive(ElementType A[], int N);  // 递归的归并排序，O(n*logn)
+void Merge_Sort_NotRecursive(ElementType A[], int N);  // 非递归的归并排序，O(n*logn)
+void Quick_Sort(ElementType A[], int N);    // 快速排序，O(n*logn)
+
+int main()
+{
+    int N;
+    ElementType *arr;
+    scanf("%d", &N);
+    arr = ReadInput(N);
+    Quick_Sort(arr, N);
+    PrintArr(arr, N);
+    free(arr);
+
+    return 0;
+}
+
+ElementType *ReadInput(int N)
+{
+    ElementType *arr;
+    int i;
+    arr = (ElementType *)malloc(sizeof(ElementType) * N);
+    for (i = 0 ; i < N; ++i)
+        scanf("%d", &arr[i]);
+    return arr;
+}
+
+void PrintArr(ElementType A[], int N)
+{
+    int i;
+    for ( i = 0; i < N - 1; ++i)
+        printf("%d ", A[i]);
+    printf("%d", A[i]);
 }
 
 void PercDown(ElementType A[], int p, int N)
@@ -88,45 +140,37 @@ void Merge_pass(ElementType A[], ElementType TmpA[], int N, int length)
         for (j = i; j < N; ++j) TmpA[j] = A[j];
 }
 
-ElementType *ReadInput(int N);
-void PrintArr(ElementType A[], int N);
-
-void Bubble_Sort(ElementType A[], int N);   // 冒泡排序，O(n^2)，交换变量较为耗时，超时过不了
-void Insertion_Sort(ElementType A[], int N);    // 插入排序，O(n^2)
-void Shell_Sort(ElementType A[], int N);    //希尔排序，O(n^(1.3—2))
-void Heap_Sort(ElementType A[], int N);     // 堆排序，O(n*logn)
-void Merge_Sort_Recursive(ElementType A[], int N);  // 递归的归并排序，O(n*logn)
-void Merge_Sort_NotRecursive(ElementType A[], int N);  // 非递归的归并排序，O(n*logn)
-
-int main()
+ElementType Median3( ElementType A[], int Left, int Right )
 {
-    int N;
-    ElementType *arr;
-    scanf("%d", &N);
-    arr = ReadInput(N);
-    Merge_Sort_NotRecursive(arr, N);
-    PrintArr(arr, N);
-    free(arr);
-
-    return 0;
+    int Center = (Left+Right) / 2;
+    if ( A[Left] > A[Center] )
+        Swap( &A[Left], &A[Center] );
+    if ( A[Left] > A[Right] )
+        Swap( &A[Left], &A[Right] );
+    if ( A[Center] > A[Right] )
+        Swap( &A[Center], &A[Right] );
+    Swap( &A[Center], &A[Right-1] );
+    return  A[Right-1];
 }
 
-ElementType *ReadInput(int N)
+void Qsort(ElementType A[], int Left, int Right)
 {
-    ElementType *arr;
-    int i;
-    arr = (ElementType *)malloc(sizeof(ElementType) * N);
-    for (i = 0 ; i < N; ++i)
-        scanf("%d", &arr[i]);
-    return arr;
-}
+    int Pivot, Low, High;
 
-void PrintArr(ElementType A[], int N)
-{
-    int i;
-    for ( i = 0; i < N - 1; ++i)
-        printf("%d ", A[i]);
-    printf("%d", A[i]);
+    if (QuickSort_Cutoff <= Right - Left) {
+        Pivot = Median3(A, Left, Right);
+        Low = Left; High = Right - 1;
+        while (1) {
+            while(A[++Low] < Pivot) ;
+            while(A[--High] > Pivot) ;
+            if (Low < High) Swap(&A[Low], &A[High]);
+            else break;
+        }
+        Swap(&A[Low], &A[Right - 1]);
+        Qsort(A, Left, Low - 1);
+        Qsort(A, Low + 1, Right);
+    }
+    else Insertion_Sort(A + Left, Right - Left + 1);
 }
 
 void Bubble_Sort(ElementType A[], int N)
@@ -215,4 +259,9 @@ void Merge_Sort_NotRecursive(ElementType A[], int N)
         }
         free(TmpA);
     }
+}
+
+void Quick_Sort(ElementType A[], int N)
+{
+    Qsort(A, 0, N - 1);
 }
