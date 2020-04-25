@@ -173,8 +173,8 @@ void Qsort3_Cutoff100(ElementType A[], int Left, int Right)
             else break;
         }
         Swap(&A[Low], &A[Right - 1]);
-        Qsort3(A, Left, Low - 1);
-        Qsort3(A, Low + 1, Right);
+        Qsort3_Cutoff100(A, Left, Low - 1);
+        Qsort3_Cutoff100(A, Low + 1, Right);
     }
     else Insertion_Sort(A + Left, Right - Left + 1);
 }
@@ -193,8 +193,8 @@ void Qsort3_Cutoff200(ElementType A[], int Left, int Right)
             else break;
         }
         Swap(&A[Low], &A[Right - 1]);
-        Qsort3(A, Left, Low - 1);
-        Qsort3(A, Low + 1, Right);
+        Qsort3_Cutoff200(A, Left, Low - 1);
+        Qsort3_Cutoff200(A, Low + 1, Right);
     }
     else Insertion_Sort(A + Left, Right - Left + 1);
 }
@@ -213,8 +213,8 @@ void Qsort3_Cutoff300(ElementType A[], int Left, int Right)
             else break;
         }
         Swap(&A[Low], &A[Right - 1]);
-        Qsort3(A, Left, Low - 1);
-        Qsort3(A, Low + 1, Right);
+        Qsort3_Cutoff300(A, Left, Low - 1);
+        Qsort3_Cutoff300(A, Low + 1, Right);
     }
     else Insertion_Sort(A + Left, Right - Left + 1);
 }
@@ -233,8 +233,8 @@ void Qsort3_Cutoff400(ElementType A[], int Left, int Right)
             else break;
         }
         Swap(&A[Low], &A[Right - 1]);
-        Qsort3(A, Left, Low - 1);
-        Qsort3(A, Low + 1, Right);
+        Qsort3_Cutoff400(A, Left, Low - 1);
+        Qsort3_Cutoff400(A, Low + 1, Right);
     }
     else Insertion_Sort(A + Left, Right - Left + 1);
 }
