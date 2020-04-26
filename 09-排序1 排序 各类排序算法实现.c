@@ -1,9 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define QuickSort_Cutoff 50
+#define QuickSort_Cutoff 50 // 快速排序最小排序长度，当待排序列长度小于该数值时，使用插入排序
+
+// 假设元素最多有4位
+#define MaxDigit 4
+#define Radix 10
 
 typedef int ElementType;
+
+/* ——————桶排序所需数据结构定义开始—————— */
+/* 桶元素结点 */
+typedef struct Node *PtrToNode;
+struct Node {
+    int key;
+    PtrToNode next;
+};
+
+/* 桶头结点 */
+struct HeadNode {
+    PtrToNode head, tail;
+};
+typedef struct HeadNode Bucket[Radix];
+/* ——————桶排序所需数据结构定义结束—————— */
 
 void Swap (ElementType *a, ElementType *b)
 {
@@ -18,16 +37,23 @@ void Merge_Recursive(ElementType A[], ElementType TmpA[], int L, int R, int Righ
 void Merge_NotRecursive(ElementType A[], ElementType TmpA[], int L, int R, int RightEnd);   // 非递归的归并排序使用函数
 void Msort(ElementType A[], ElementType TmpA[], int L, int RightEnd);   // 递归的归并排序使用函数
 void Merge_pass(ElementType A[], ElementType TmpA[], int N, int length);    // 非递归的归并排序使用函数
-ElementType Median3( ElementType A[], int Left, int Right );    // 快速排序中的选主元函数
+ElementType Median3( ElementType A[], int Left, int Right );    // 快速排序中的选主元函数，此处使用三数取中法
 void Qsort(ElementType A[], int Left, int Right);   // 快速排序的递归函数
+int GetDigit(int X, int D);     // 基数排序中用于获取对应位的数字的函数
+void MSD(ElementType A[], int L, int R, int D);     // 主位优先的基数排序的核心递归函数
 
-void Bubble_Sort(ElementType A[], int N);   // 冒泡排序，O(n^2)，交换变量较为耗时，超时过不了
+// 各排序算法实现接口及对应的平均时间复杂度说明
+void Selection_Sort(ElementType A[], int N);    // 简单选择排序，O(n^2)
+void Bubble_Sort(ElementType A[], int N);   // 冒泡排序，O(n^2)，交换变量较为耗时，测试点4、6和8超时过不了
 void Insertion_Sort(ElementType A[], int N);    // 插入排序，O(n^2)
-void Shell_Sort(ElementType A[], int N);    //希尔排序，O(n^(1.3—2))
+void Shell_Sort(ElementType A[], int N);    // 希尔排序，O(n^(1.3—2))
 void Heap_Sort(ElementType A[], int N);     // 堆排序，O(n*logn)
 void Merge_Sort_Recursive(ElementType A[], int N);  // 递归的归并排序，O(n*logn)
 void Merge_Sort_NotRecursive(ElementType A[], int N);  // 非递归的归并排序，O(n*logn)
 void Quick_Sort(ElementType A[], int N);    // 快速排序，O(n*logn)
+// 基数排序仅能处理正数值区间的数据，因此只看测试点8的结果即可
+void LSD_Radix_Sort(ElementType A[], int N);    // 次位优先的基数排序，O(P*(N+B))，P为趟数，B为桶个数
+void MSD_Radix_Sort(ElementType A[], int N);    // 主位优先的基数排序
 
 int main()
 {
@@ -35,7 +61,7 @@ int main()
     ElementType *arr;
     scanf("%d", &N);
     arr = ReadInput(N);
-    Quick_Sort(arr, N);
+    LSD_Radix_Sort(arr, N);
     PrintArr(arr, N);
     free(arr);
 
@@ -173,6 +199,74 @@ void Qsort(ElementType A[], int Left, int Right)
     else Insertion_Sort(A + Left, Right - Left + 1);
 }
 
+int GetDigit ( int X, int D )
+{ /* 默认次位D=1, 主位D<=MaxDigit */
+    int d, i;
+
+    for (i = 1; i <= D; ++i) {
+        d = X % Radix;
+        X /= Radix;
+    }
+    return d;
+}
+
+void MSD( ElementType A[], int L, int R, int D )
+{ /* 核心递归函数: 对A[L]...A[R]的第D位数进行排序 */
+     int Di, i, j;
+     Bucket B;
+     PtrToNode tmp, p, List = NULL;
+     if (D == 0) return; /* 递归终止条件 */
+
+     for (i = 0; i < Radix; ++i) /* 初始化每个桶为空链表 */
+         B[i].head = B[i].tail = NULL;
+     for (i = L; i <= R; ++i) { /* 将原始序列逆序存入初始链表List */
+         tmp = (PtrToNode)malloc(sizeof(struct Node));
+         tmp->key = A[i];
+         tmp->next = List;
+         List = tmp;
+     }
+     /* 下面是分配的过程 */
+     p = List;
+     while (p) {
+         Di = GetDigit(p->key, D); /* 获得当前元素的当前位数字 */
+         /* 从List中摘除 */
+         tmp = p; p = p->next;
+         /* 插入B[Di]号桶 */
+         if (B[Di].head == NULL) B[Di].tail = tmp;
+         tmp->next = B[Di].head;
+         B[Di].head = tmp;
+     }
+     /* 下面是收集的过程 */
+     i = j = L; /* i, j记录当前要处理的A[]的左右端下标 */
+     for (Di = 0; Di < Radix; ++Di) { /* 对于每个桶 */
+         if (B[Di].head) { /* 将非空的桶整桶倒入A[], 递归排序 */
+             p = B[Di].head;
+             while (p) {
+                 tmp = p;
+                 p = p->next;
+                 A[j++] = tmp->key;
+                 free(tmp);
+             }
+             /* 递归对该桶数据排序, 位数减1 */
+             MSD(A, i, j-1, D-1);
+             i = j; /* 为下一个桶对应的A[]左端 */
+         }
+     }
+}
+
+void Selection_Sort(ElementType A[], int N)
+{
+    int i, j, min_index;
+
+    for (i = 0; i < N; ++i) {
+        min_index = i;
+        for (j = i + 1; j < N; ++j)
+            if (A[j] < A[min_index])
+                min_index = j;
+        Swap(&A[i], &A[min_index]);
+    }
+}
+
 void Bubble_Sort(ElementType A[], int N)
 {
     int P, i, flag;
@@ -264,4 +358,60 @@ void Merge_Sort_NotRecursive(ElementType A[], int N)
 void Quick_Sort(ElementType A[], int N)
 {
     Qsort(A, 0, N - 1);
+}
+
+void LSD_Radix_Sort(ElementType A[], int N)
+{
+     int D, Di, i;
+     Bucket B;
+     PtrToNode tmp, p, List = NULL;
+
+     for (i = 0; i < Radix; ++i) /* 初始化每个桶为空链表 */
+         B[i].head = B[i].tail = NULL;
+     for (i = 0; i < N; ++i) { /* 将原始序列逆序存入初始链表List */
+         tmp = (PtrToNode)malloc(sizeof(struct Node));
+         tmp->key = A[i];
+         tmp->next = List;
+         List = tmp;
+     }
+     /* 下面开始排序 */
+     for (D = 1; D <= MaxDigit; ++D) { /* 对数据的每一位循环处理 */
+         /* 下面是分配的过程 */
+         p = List;
+         while (p) {
+             Di = GetDigit(p->key, D); /* 获得当前元素的当前位数字 */
+             /* 从List中摘除 */
+             tmp = p; p = p->next;
+             /* 插入B[Di]号桶尾 */
+             tmp->next = NULL;
+             if (B[Di].head == NULL)
+                 B[Di].head = B[Di].tail = tmp;
+             else {
+                 B[Di].tail->next = tmp;
+                 B[Di].tail = tmp;
+             }
+         }
+         /* 下面是收集的过程 */
+         List = NULL;
+         for (Di = Radix-1; Di >= 0; --Di) { /* 将每个桶的元素顺序收集入List */
+             if (B[Di].head) { /* 如果桶不为空 */
+                 /* 整桶插入List表头 */
+                 B[Di].tail->next = List;
+                 List = B[Di].head;
+                 B[Di].head = B[Di].tail = NULL; /* 清空桶 */
+             }
+         }
+     }
+     /* 将List倒入A[]并释放空间 */
+     for (i = 0; i < N; ++i) {
+        tmp = List;
+        List = List->next;
+        A[i] = tmp->key;
+        free(tmp);
+     }
+}
+
+void MSD_Radix_Sort(ElementType A[], int N)
+{
+    MSD(A, 0, N-1, MaxDigit);
 }
