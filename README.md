@@ -13,6 +13,7 @@
 - [08-图9 关键活动 题目关键点说明及解法完全分析](https://blog.csdn.net/zhuiyisinian/article/details/105492455)
 - [09-排序2 Insert or Merge 及 09-排序3 Insertion or Heap Sort 两道题目分析](https://blog.csdn.net/zhuiyisinian/article/details/105700766)
 - [10-排序5 PAT Judge 题目分析 次位优先的基数排序实现](https://blog.csdn.net/zhuiyisinian/article/details/105793657)
+- [10-排序6 Sort with Swap(0, i) 贪心法和数环法两种解法对比分析](https://blog.csdn.net/zhuiyisinian/article/details/105815935)
 - ...(随课程进度更新题解)
 
 补充题目：
