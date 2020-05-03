@@ -1,4 +1,4 @@
-# PTA（拼题A）-浙江大学中国大学mooc数据结构2020年春AC代码与题目解析（C语言）
+# PTA（拼题A）-浙江大学中国大学mooc数据结构全AC代码与题目解析（C语言）
 
 部分难题解法分析：
 
@@ -14,9 +14,9 @@
 - [09-排序2 Insert or Merge 及 09-排序3 Insertion or Heap Sort 两道题目分析](https://blog.csdn.net/zhuiyisinian/article/details/105700766)
 - [10-排序5 PAT Judge 题目分析 次位优先的基数排序实现](https://blog.csdn.net/zhuiyisinian/article/details/105793657)
 - [10-排序6 Sort with Swap(0, i) 贪心法和数环法两种解法对比分析](https://blog.csdn.net/zhuiyisinian/article/details/105815935)
+- [11-散列4 Hashing - Hard Version 解法详述](https://blog.csdn.net/zhuiyisinian/article/details/105902862)
 - ...(随课程进度更新题解)
 
-补充题目：
+第六讲附加题目：
 
-- 图：
-  - Forwards on Weibo: [题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805392092020736)  [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105249299)
+- **1076** **Forwards on Weibo**: [题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805392092020736)  [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105249299)
