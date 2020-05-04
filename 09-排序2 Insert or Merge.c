@@ -97,6 +97,7 @@ void Merge_Sort(ElementType A[], ElementType ansArr[], int N)
         if (ansArr[i] > ansArr[i + 1]) {
             small_length = length < small_length ? length : small_length;
             length = 1;
+            continue;
         }
         ++length;
     }
