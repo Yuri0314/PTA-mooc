@@ -18,8 +18,9 @@
 
 第六讲附加题目：
 
-- **1076** **Forwards on Weibo**: [题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805392092020736)  [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105249299)
+- **1076** **Forwards on Weibo**: [PTA平台题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805392092020736) [牛客网题目地址](https://www.nowcoder.com/pat/5/problem/4306) [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105249299)
 
 第七讲附加题目：
 
-- **1003** **Emergency**：[题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805523835109376) [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105971750)
+- **1003** **Emergency**：[PTA平台题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805523835109376) [牛客网题目地址](https://www.nowcoder.com/pat/1/problem/4001) [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105971750)
+- **1072** **Gas Station**：[PTA平台题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805396953219072) [牛客网题目地址](https://www.nowcoder.com/pat/5/problem/4121) [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105985872)
