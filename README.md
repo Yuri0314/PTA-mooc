@@ -15,8 +15,11 @@
 - [10-排序5 PAT Judge 题目分析 次位优先的基数排序实现](https://blog.csdn.net/zhuiyisinian/article/details/105793657)
 - [10-排序6 Sort with Swap(0, i) 贪心法和数环法两种解法对比分析](https://blog.csdn.net/zhuiyisinian/article/details/105815935)
 - [11-散列4 Hashing - Hard Version 解法详述](https://blog.csdn.net/zhuiyisinian/article/details/105902862)
-- ...(随课程进度更新题解)
 
 第六讲附加题目：
 
 - **1076** **Forwards on Weibo**: [题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805392092020736)  [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105249299)
+
+第七讲附加题目：
+
+- **1003** **Emergency**：[题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805523835109376) [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105971750)
