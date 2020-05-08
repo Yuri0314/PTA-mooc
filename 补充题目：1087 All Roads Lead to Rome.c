@@ -353,7 +353,6 @@ void ReadInput(HashTable hTable, LGraph graph)
     edge = (Edge)malloc(sizeof(struct ENode));
     for (i = 0; i < graph->Ne; ++i) {
         scanf("%s %s %d", city1, city2, &(edge->cost));
-        if (edge->cost < 0) continue;
         pos1 = Find(hTable, city1); pos2 = Find(hTable, city2);
         if (!pos1 || !pos2) continue;
         edge->V1 = pos1->Value; edge->V2 = pos2->Value;
@@ -382,7 +381,7 @@ void solve(HashTable hTable, LGraph graph)
     Vertex V, destination;
 
     init(graph);
-    heap = CreateHeap(graph->Nv);
+    heap = CreateHeap(graph->Nv * graph->Nv);
     // 先将源点放入已取元素的集合中，然后更改其邻接点相关值
     collected[0] = true; cost[0] = 0; routeNum[0] = 1;
     for (edge = graph->G[0].FirstEdge; edge; edge = edge->Next) {
