@@ -1,6 +1,6 @@
 # PTA（拼题A）-浙江大学中国大学mooc数据结构全AC代码与题目解析（C语言）
 
-部分难题解法分析：
+### 课程对应题目集中部分难题解法分析：
 
 - [02-线性结构3 Reversing Linked List](https://blog.csdn.net/zhuiyisinian/article/details/104695207)
 - [03-树2 List Leaves](https://blog.csdn.net/zhuiyisinian/article/details/104759838)
@@ -16,6 +16,8 @@
 - [10-排序6 Sort with Swap(0, i) 贪心法和数环法两种解法对比分析](https://blog.csdn.net/zhuiyisinian/article/details/105815935)
 - [11-散列4 Hashing - Hard Version 解法详述](https://blog.csdn.net/zhuiyisinian/article/details/105902862)
 
+### 课程公告中附加的题目
+
 第六讲附加题目：
 
 - **1076** **Forwards on Weibo**: [PTA平台题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805392092020736) [牛客网题目地址](https://www.nowcoder.com/pat/5/problem/4306) [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105249299)
@@ -24,3 +26,20 @@
 
 - **1003** **Emergency**：[PTA平台题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805523835109376) [牛客网题目地址](https://www.nowcoder.com/pat/1/problem/4001) [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105971750)
 - **1072** **Gas Station**：[PTA平台题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805396953219072) [牛客网题目地址](https://www.nowcoder.com/pat/5/problem/4121) [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105985872)
+
+- **1087** **All Roads Lead to Rome**：[PTA平台题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805379664297984) [牛客网题目地址](https://www.nowcoder.com/pat/5/problem/4315) [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/106019615)
+
+这里给出了附加题目在PTA平台和牛客网两个平台上的题目地址，因为两个平台上题目完全相同但测试用例和测试点稍有不同（牛客网上的测试点更多更严格）。此外，我还给出了参考解析提供基本解题思路。
+
+---
+
+无论是课程题目集中的题目还是公告中附加的题目都多为PAT竞赛中的题目，除PTA平台外，牛客网也有相关题目集练习的平台
+
+:point_right: [PAT计算机程序设计能力考试真题练习](https://www.patest.cn/practice)
+
+:point_right: [牛客网PAT真题练兵场](https://www.nowcoder.com/pat)
+
+**PS：两个平台上提交后的运行用例并不完全相同，编写完成代码后可在两平台上分别提交尝试检查**
+
+**PPS：本代码库中课程题目集中相应的题目代码均只在PTA平台上测试通过，并未在牛客网测试，欢迎大家补充指正** :blush:
+
