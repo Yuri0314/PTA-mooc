@@ -6,7 +6,6 @@
 /* ——————无向图的邻接表定义开始—————— */
 #define MaxVertexNum 10000
 typedef int Vertex;
-typedef int DataType;
 
 typedef struct ENode *PtrToENode;
 struct ENode{
