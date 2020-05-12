@@ -30,6 +30,7 @@
 - **1072** **Gas Station**：[PTA平台题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805396953219072) [牛客网题目地址](https://www.nowcoder.com/pat/5/problem/4121) [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/105985872)
 - **1087** **All Roads Lead to Rome**：[PTA平台题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805379664297984) [牛客网题目地址](https://www.nowcoder.com/pat/5/problem/4315) [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/106019615)
 - **1131** **Subway Map**：[PTA平台题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805347523346432) 牛客网无本题 [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/106037980)
+- **1018** **Public Bike Management**：[PTA平台题目地址](https://pintia.cn/problem-sets/994805342720868352/problems/994805489282433024) [牛客网题目地址](https://www.nowcoder.com/pat/5/problem/4324) [题目解析](https://blog.csdn.net/zhuiyisinian/article/details/106079191)
 
 这里给出了附加题目在PTA平台和牛客网两个平台上的题目地址，因为两个平台上题目完全相同但测试用例和测试点稍有不同（牛客网上的测试点更多更严格）。此外，我还给出了参考解析提供基本解题思路。
 
