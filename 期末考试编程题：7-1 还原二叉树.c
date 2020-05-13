@@ -3,7 +3,7 @@
 
 #define MAXN 50
 
-int GetHeight(char *a, char *b, int len);   // »ñÈ¡Ê÷µÄ×î´ó¸ß¶È
+int GetHeight(char *a, char *b, int len);   // è·å–æ ‘çš„æœ€å¤§é«˜åº¦
 
 int main()
 {
