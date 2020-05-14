@@ -1,5 +1,7 @@
 # PTA（拼题A）-浙江大学中国大学mooc数据结构全AC代码与题目解析（C语言）
 
+**课程地址**：[https://www.icourse163.org/course/ZJU-93001](https://www.icourse163.org/course/ZJU-93001)
+
 各题目中相关数据结构均手动实现，没有使用各类库函数，方便大家参考学习！
 
 ### 课程对应题目集中部分难题解法分析：
